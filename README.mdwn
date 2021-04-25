@@ -1,0 +1,36 @@
+# BDD (BDDMockito by JUnit5) 를 이용한 Member Application
+
+### BDD 를 위한 고민
+
+- [JUnit5 BDDMockito로 알아보는 TDD와 BDD 의 차이 및 BDD 실습](https://wonit.tistory.com/493)
+- [@ParameterizeTest 로 하나의 테스트 코드에서 여러 개의 파라미터 테스트하기](https://wonit.tistory.com/492)
+
+## 사용 기술
+
+- Spring Boot
+    - dependencies
+        - `org.springframework.boot`
+            - `spring-boot-starter-web`
+            - `spring-boot-starter-test`
+            - `spring-boot-starter-security`
+                - `io.jsonwebtoken`
+                - `jjwt-impl`
+                - `jjwt-api`
+                - `jjwt-jackson`
+            - `spring-boot-starter-validation`
+        - `spring-boot-starter-data-jpa`
+            - `com.h2database`
+        - `org.projectlombok`
+        - `org.modelmapper`
+
+
+## Project Structure
+
+- Layered Architecture
+    - Controller
+    - Service
+    - Domain
+        - Entity
+        - Dto
+
+
