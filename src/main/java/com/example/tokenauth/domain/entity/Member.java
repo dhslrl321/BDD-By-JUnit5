@@ -25,6 +25,7 @@ public class Member extends BaseEntity {
                                 PasswordEncoder passwordEncoder) {
         this.password = passwordEncoder.encode(password);
     }
+
     public void changeNicknameFrom(MemberModificationData memberModificationData) {
         this.nickname = memberModificationData.getNickname();
     }

@@ -45,6 +45,7 @@ class MemberServiceTest {
     void setUp() {
         ModelMapper modelMapper = new ModelMapper();
         PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+
         memberService = new MemberService(memberRepository, roleRepository, passwordEncoder, modelMapper);
 
         Member member = Member.builder()
@@ -63,10 +64,14 @@ class MemberServiceTest {
                     .build();
             members.add(memberEach);
         });
+
         Page<Member> pagedMembers = new PageImpl<>(members);
+
         given(memberRepository.findAll(PageRequest.of(PAGE_INDEX, PAGE_SIZE))).willReturn(pagedMembers);
         given(memberRepository.findById(1L)).willReturn(Optional.of(member));
         given(memberRepository.findById(DELETED_USER_ID)).willReturn(Optional.empty());
+
+
         given(memberRepository.save(any(Member.class))).will(invocation -> {
             Member source = invocation.getArgument(0);
             source.changePassword(source.getPassword(), passwordEncoder);
